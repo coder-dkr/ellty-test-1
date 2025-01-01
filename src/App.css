@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body{
+  background-color: rgb(219, 216, 216);
+  font-family: "Montserrat", serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18.2px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(31, 33, 40, 1);
+
+}
+
+#frame{
+  position: absolute;
+  width: 578px;
+  height: 794px;
+  background-color: white;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 5%;
+}
+
+#box{
+position: absolute;;
+width:  370px;
+height: auto;
+top: 85px;
+left: 104px;
+padding: 10px 0;
+border-radius: 6px;
+border: 1px solid rgba(238, 238, 238, 1);
+box-shadow: 0px 0px 4px 0px rgba(20, 20, 20, 0.1);
+transition: all 0.1s ease-in-out;
+}
+#box:hover{
+
+box-shadow: 0px 8px 15px 0px rgba(20, 20, 20, 0.12);
+}
+
+#all-pages-selector{
+  width: auto;
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 18px;
+}
+
+ hr {
+  border: 0.4px solid #CDCDCD;
+  margin: 10px 15px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 10px;
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+  max-height: 0; 
+}
+
+label {
+  cursor: pointer;
+}
+
+ul.open {
+  max-height: 184px; 
+}
+
+
+.Page {
+    width: auto;
+    height: 42px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px 0 18px;
+}
+input[type="checkbox"] {
+  width: 23px;   
+  height: 23px;  
+  appearance: none; 
+  border: 1px solid rgb(212, 207, 207); 
+  border-radius: 6px; 
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+input[type="checkbox"]:checked {
+  border: 1px solid rgba(36, 105, 246, 1); 
+}
+
+input[type="checkbox"]:checked::before {
+  content: ""; 
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px; 
+  background: url('/public/tick.svg') no-repeat center center; 
+  background-size: 100% 100%;
+}
+.checkbox-holder{
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#done-button {
+  cursor: pointer;
+  position: relative;
+  border: 0;
+  outline: 0;
+  background-color: rgba(255, 206, 34, 1);
+  width: 340px;
+  height: 40px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 4px ;
+  font-family: "Montserrat", serif;
+  font-size: 14px;
+  font-weight: 300;
+  margin: 10px 15px;
+  transition-duration: 0.2s;
+  overflow: hidden;
+}
+
+#done-button p {
+  position: relative;
+  z-index: 3;
+}
+
+.button-overlay-hover {
+  position: absolute;
+  background-color: rgba(255, 216, 77, 1); 
+  height: 0%;
+  width: 0%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.3s ease-in-out;
+  z-index: 1; 
+  border-radius: 50%
+}
+
+.button-overlay-click {
+  position: absolute;
+  background-color: rgba(255, 206, 34, 1); 
+  height: 0%;
+  width: 0%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.3s ease-in-out;
+  z-index: 2; 
+  border-radius: 50%
+}
+
+.clicked { 
+  height: 400px;
+  width: 400px;
+  transform: translate(-50%, -50%) scale(1); 
+}
+
+#done-button:hover .button-overlay-hover {
+  height: 400px;
+  width: 400px;
+  transform: translate(-50%, -50%) scale(1); 
+}
