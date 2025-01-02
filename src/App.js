@@ -1,4 +1,3 @@
-
 import './App.css';
 import React, { useState } from 'react';
 
@@ -14,9 +13,10 @@ function App() {
 
   const [selectAll, setSelectAll] = useState(false);
 
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [confirmtext, setconfirmtext] = useState("pages are updated in console")
 
   const toggleOption = (id) => {
+    
     const updatedOpts = options.map((option) =>
       option.id === id ? { ...option, selected: !option.selected } : option
     );
@@ -36,16 +36,19 @@ function App() {
     setOptions(updatedOpts);
   };
 
-  
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
 
   const handleDone = () => {
-    setDropdownOpen(false);
+    
     document.querySelector(".button-overlay-click").classList.add("clicked")
 
+    setconfirmtext("pages updated")
+
     console.log('Selected Options:', options.filter((option) => option.selected));
+
+    setInterval(() => {
+      setconfirmtext("pages are updated in console")
+    }, 2000);
+
   };
 
   const handleMouseLeave = () => {
@@ -54,45 +57,42 @@ function App() {
 
   return (
     <>
-    <div id='frame'>
-      <div id="box">
-      <div id="all-pages-selector" onClick={toggleDropdown}>
+    <p className="confirmtext" >{confirmtext}</p>
+      <div id='frame'>
+        <div id="box">
+          <div id="all-pages-selector" >
             <label>All pages</label>
             <div className='checkbox-holder' >
-            <input
-              type="checkbox"
-              checked={selectAll}
-              onChange={toggleSelectAll}
-            />
-            </div>
-      </div>
-      <hr></hr>
-      
-
-        <ul className={` ${ dropdownOpen ? 'open' : ''}`}>
-          {options.map((option) => (
-            <li key={option.id} className='Page'>
-              <label onClick={() => toggleOption(option.id)}>{option.label}</label>
               <input
                 type="checkbox"
-                checked={option.selected}
-                onChange={() => toggleOption(option.id)}
+                checked={selectAll}
+                onChange={toggleSelectAll}
               />
-            </li>
-          ))}
+            </div>
+          </div>
           <hr></hr>
-        </ul>  
-
-        <button  id="done-button" onClick={handleDone} onMouseLeave={handleMouseLeave}>
-          <div className='button-overlay-hover'></div>
-          <div className='button-overlay-click'></div>
-          <p>Done</p>
+          <ul className={`open`}>
+            {options.map((option) => (
+              <li key={option.id} className='Page'>
+                <label onClick={() => toggleOption(option.id)}>{option.label}</label>
+                <div className='checkbox-holder' >
+                  <input
+                    type="checkbox"
+                    checked={option.selected}
+                    onChange={() => toggleOption(option.id)}
+                  />
+                </div>
+              </li>
+            ))}
+            <hr></hr>
+          </ul>
+          <button id="done-button" onClick={handleDone} onMouseLeave={handleMouseLeave}>
+            <div className='button-overlay-hover'></div>
+            <div className='button-overlay-click'></div>
+            <p>Done</p>
           </button>
-       
+        </div>
       </div>
-
-
-    </div>
     </>
   );
 }
