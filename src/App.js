@@ -45,7 +45,7 @@ function App() {
 
     console.log('Selected Options:', options.filter((option) => option.selected));
 
-    setInterval(() => {
+    setTimeout(() => {
       setconfirmtext("pages are updated in console")
     }, 2000);
 
