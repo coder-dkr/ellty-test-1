@@ -48,12 +48,10 @@ function App() {
     setTimeout(() => {
       setconfirmtext("pages are updated in console")
     }, 2000);
-
-  };
-
-  const handleMouseLeave = () => {
+    setTimeout(() => {
     document.querySelector(".button-overlay-click").classList.remove("clicked")
-  }
+  }, 500);
+  };
 
   return (
     <>
@@ -86,7 +84,7 @@ function App() {
             ))}
             <hr></hr>
           </ul>
-          <button id="done-button" onClick={handleDone} onMouseLeave={handleMouseLeave}>
+          <button id="done-button" onClick={handleDone}>
             <div className='button-overlay-hover'></div>
             <div className='button-overlay-click'></div>
             <p>Done</p>
